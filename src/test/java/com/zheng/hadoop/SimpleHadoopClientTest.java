@@ -2,6 +2,7 @@ package com.zheng.hadoop;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.util.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +31,7 @@ public class SimpleHadoopClientTest {
     @Before
     public void init() throws Exception {
         conf = new Configuration();
+        conf.set("dfs.replication", "2");
         fs = FileSystem.get(new URI("hdfs://192.168.1.200:9000"), conf, "hadoop");
     }
     
@@ -77,6 +79,14 @@ public class SimpleHadoopClientTest {
             System.out.println("owner: " + status.getOwner());
             System.out.println("replication: " + status.getReplication());
             System.out.println("name: " + status.getPath().getName());
+            BlockLocation[] locations = status.getBlockLocations();
+            for (BlockLocation bl : locations) {
+                System.out.println("块偏移量" + bl.getOffset());
+                System.out.println("块大小" + bl.getLength());
+                System.out.println("名字: " + StringUtils.join(",", bl.getNames()));
+                System.out.println("主机: " + StringUtils.join(",", bl.getHosts()));
+                
+            }
             
         }
     }
