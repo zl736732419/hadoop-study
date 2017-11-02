@@ -36,9 +36,9 @@ public class WordCountDriver {
         job.setOutputValueClass(IntWritable.class);
 
         // 指定job输入的原始文件所在目录
-        FileInputFormat.setInputPaths(job, new Path("/wordcount/input"));
+        FileInputFormat.setInputPaths(job, new Path(args[0]));
         // 指定最终输出结果文件所在目录
-        FileOutputFormat.setOutputPath(job, new Path("/wordcount/output"));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         // 将job中配置的相关参数以及job所用的jar提交到yarn运行,verbose=true表示打印出日志信息
         boolean result = job.waitForCompletion(true);
