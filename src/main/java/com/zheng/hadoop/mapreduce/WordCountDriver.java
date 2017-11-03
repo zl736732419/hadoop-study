@@ -12,6 +12,9 @@ import java.io.IOException;
 
 /**
  * 任务驱动程序，负责将mapreduce封装成job提交到yarn进行调度运行
+ * 最后提交到hadoop集群中运行命令：
+ * hadoop jar jarpackage.jar com.zheng.hadoop.mapreduce.WordCountDriver /wordcount/input /wordcount/output
+ * 执行自定义job
  * Created by zhenglian on 2017/11/3.
  */
 public class WordCountDriver {
