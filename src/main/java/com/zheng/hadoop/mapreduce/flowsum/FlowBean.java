@@ -63,7 +63,7 @@ public class FlowBean implements Writable {
 
     @Override
     public String toString() {
-        return this.getUpFlow() + "\t" + this.getDownFlow();
+        return this.getUpFlow() + "\t" + this.getDownFlow() + "\t" + this.getSumFlow();
     }
 
     public Long getUpFlow() {
@@ -80,5 +80,13 @@ public class FlowBean implements Writable {
 
     public void setDownFlow(Long downFlow) {
         this.downFlow = downFlow;
+    }
+
+    public Long getSumFlow() {
+        return sumFlow;
+    }
+
+    public void setSumFlow(Long sumFlow) {
+        this.sumFlow = sumFlow;
     }
 }
