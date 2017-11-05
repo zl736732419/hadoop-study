@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class FlowBeanDriver {
 
     public static void main(String[] args) throws Exception {
-
+    
         Job job = Job.getInstance();
         job.setJarByClass(FlowBeanDriver.class);
 
