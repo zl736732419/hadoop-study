@@ -44,7 +44,8 @@ public class FlowBean implements Writable {
     public void write(DataOutput out) throws IOException {
         out.writeLong(upFlow);
         out.writeLong(downFlow);
-//        out.writeLong(sumFlow);
+        // 这里的sumFlow必须序列化，否则hadoop无法获取到值
+        out.writeLong(sumFlow);
     }
 
     /**
@@ -56,7 +57,8 @@ public class FlowBean implements Writable {
     public void readFields(DataInput in) throws IOException {
         upFlow = in.readLong();
         downFlow = in.readLong();
-//        sumFlow = in.readLong();
+        // 这里的sumFlow必须序列化，否则hadoop无法获取到值
+        sumFlow = in.readLong();
     }
 
     @Override
