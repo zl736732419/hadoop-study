@@ -25,6 +25,10 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
+            <!--
+            这里需要注意一点，hadoop-client的版本号要与你系统环境变量设置的hadoop版本号一致
+            否则可能会出现版本不兼容导致的hadoop无法调用问题
+            -->
             <version>2.6.1</version>
         </dependency>
 
