@@ -29,7 +29,7 @@ public class FlowBeanDriver {
         job.setOutputValueClass(FlowBean.class);
 
         // 这里事先设置相同的key汇聚在一起
-        job.setCombinerClass(FlowSumCombinerReducer.class);
+//        job.setCombinerClass(FlowSumCombinerReducer.class);
         
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
