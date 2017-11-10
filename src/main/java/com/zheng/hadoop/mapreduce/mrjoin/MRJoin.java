@@ -26,7 +26,7 @@ import java.util.Objects;
 public class MRJoin {
     
     static class MRJoinMapper extends Mapper<LongWritable, Text, Text, InfoBean>{
-        private InfoBean infoBean = new InfoBean();
+//        private InfoBean infoBean = new InfoBean();
         private Text k = new Text();
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -37,6 +37,7 @@ public class MRJoin {
             FileSplit split = (FileSplit) context.getInputSplit();
             String fileName = split.getPath().getName();
             String pid;
+            InfoBean infoBean = new InfoBean();
             if (fileName.startsWith("product")) { // 产品文件1
                 // id	pname	category_id	price
                 pid = arrs[0];
@@ -55,6 +56,16 @@ public class MRJoin {
         @Override
         protected void reduce(Text key, Iterable<InfoBean> beans, Context context) throws IOException, InterruptedException {
             List<InfoBean> orderBeans = new ArrayList<>();
+//            InfoBean pBean = null;
+//            for (InfoBean bean : beans) {
+//                if (Objects.equals(bean.getFlag(), 0)) {
+//                    orderBeans.add(bean);
+//                }else {
+//                    pBean = bean;
+//                }
+//            }
+
+
             InfoBean pBean = new InfoBean();
             for (InfoBean bean : beans) {
                 if (Objects.equals(bean.getFlag(), 0)) { // 订单
