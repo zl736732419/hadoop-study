@@ -1,4 +1,4 @@
-package com.zheng.hadoop.mapreduce.friends;
+package com.zheng.hadoop.mapreduce.friends.shared;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.conf.Configuration;
