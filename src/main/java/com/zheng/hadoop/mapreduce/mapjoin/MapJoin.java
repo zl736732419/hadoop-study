@@ -2,6 +2,7 @@ package com.zheng.hadoop.mapreduce.mapjoin;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
@@ -11,10 +12,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +43,8 @@ public class MapJoin {
         @Override
         protected void setup(Context context) throws IOException, InterruptedException {
             // 这里获取到工作目录中的产品文件，并进行解析
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("pdfs.txt")));
+            URI uri = context.getCacheFiles()[0];
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(uri))));
             String line;
             while (StringUtils.isNotEmpty(line=reader.readLine())) {
                 String[] arrs = line.split(",");
@@ -74,16 +73,25 @@ public class MapJoin {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(NullWritable.class);
 
+        Path outpath = new Path("C:/Users/Administrator/Desktop/hadooptest/output2");
+
+        FileSystem fs = FileSystem.get(conf);
+        
+        if(fs.exists(outpath)) {
+            fs.delete(outpath, true);
+        }
+
         // 这里不需要reducer来处理数据了，所有的处理过程都交由mapper来进行
         job.setNumReduceTasks(0);
-
-        FileInputFormat.setInputPaths(job, new Path("D:/hadooptest/input2/orders"));
-        FileOutputFormat.setOutputPath(job, new Path("D:/hadooptest/output2"));
+        
+        FileInputFormat.setInputPaths(job, new Path("C:/Users/Administrator/Desktop/hadooptest/input2/orders"));
+        FileOutputFormat.setOutputPath(job, outpath);
 
 //        job.addArchiveToClassPath(path); // 将jar包添加到classpath
 //        job.addCacheArchive(uri); // 将jar包添加到工作目录
 //        job.addFileToClassPath(path); // 将文件添加到classpath
-        job.addCacheFile(new URI("file:/D:/hadooptest/input2/product/pdfs.txt"));// 将文件添加到工作目录
+        job.addCacheFile(new URI("file:/C:/Users/Administrator/Desktop/hadooptest/input2/product/pdfs.txt"));// 将文件添加到工作目录
+
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
     }
