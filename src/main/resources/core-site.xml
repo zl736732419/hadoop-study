@@ -17,7 +17,8 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	<!--指定hdfs的nameservice为bi(business itelligent)-->
+
+<!--指定hdfs的nameservice为bi(business itelligent)-->
 	<property>
 		<name>fs.defaultFS</name>
 		<value>hdfs://bi</value>
@@ -28,7 +29,6 @@
 		<name>hadoop.tmp.dir</name>
 		<value>/home/hadoop/hdpdata</value>
 	</property>
-
 	<property>
 		<name>ha.zookeeper.quorum</name>
 		<value>zl50:2181,zl51:2181,zl52:2181</value>

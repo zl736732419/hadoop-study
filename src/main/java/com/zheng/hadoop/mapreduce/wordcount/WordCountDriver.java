@@ -37,9 +37,12 @@ public class WordCountDriver {
 		conf.set("fs.defaultFS", "hdfs://mini1:9000/");*/
 		
         Job job = Job.getInstance(conf);
+        
+        // 如果要在idea中运行yarn集群，那么必须使用setjar告知具体的jar，不能使用setJarByClass，否则集群根本找不到jar
+        job.setJar("C:\\Users\\Administrator\\Desktop\\wordcount.jar");
+        
         // 设置job运行的jar在哪里,这里表示与类路径相关，也就是任何地方都可以
 //        job.setJarByClass(WordCountDriver.class);
-        job.setJar("C:\\Users\\Administrator\\Desktop\\wordcount.jar");
 
         // 指定本业务job需要使用到的mapper与reducer类
         job.setMapperClass(WordCountMapper.class);

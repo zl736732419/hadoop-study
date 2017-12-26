@@ -15,7 +15,7 @@ public class AppTest {
         Configuration conf = new Configuration();
         FileSystem fs = FileSystem.get(new URI("hdfs://bi"), conf, "hadoop");
         
-        fs.copyFromLocalFile(new Path("C:\\Users\\Administrator\\Desktop\\yarn-site.xml"), new Path("/yarn-site.xml"));
+        fs.copyFromLocalFile(new Path("C:\\Users\\Administrator\\Desktop\\wordcount.jar"), new Path("/wordcount.jar"));
         fs.close();
     }
     
