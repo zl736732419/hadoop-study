@@ -38,7 +38,8 @@ public class WordCountDriver {
 		
         Job job = Job.getInstance(conf);
         // 设置job运行的jar在哪里,这里表示与类路径相关，也就是任何地方都可以
-        job.setJarByClass(WordCountDriver.class);
+//        job.setJarByClass(WordCountDriver.class);
+        job.setJar("C:\\Users\\Administrator\\Desktop\\wordcount.jar");
 
         // 指定本业务job需要使用到的mapper与reducer类
         job.setMapperClass(WordCountMapper.class);

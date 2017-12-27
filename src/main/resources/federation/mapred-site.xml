@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,21 +17,11 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	<!--指定hdfs的nameservice为bi(business itelligent)-->
-	<property>
-		<name>fs.defaultFS</name>
-		<value>hdfs://bi</value>
-	</property>
 
-	<!--hadoop tmp workdir-->
+	
 	<property>
-		<name>hadoop.tmp.dir</name>
-		<value>/home/hadoop/hdpdata</value>
-	</property>
-
-	<property>
-		<name>ha.zookeeper.quorum</name>
-		<value>zl50:2181,zl51:2181,zl52:2181</value>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
 	</property>
 
 </configuration>

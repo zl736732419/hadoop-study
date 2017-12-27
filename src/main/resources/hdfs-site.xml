@@ -31,27 +31,27 @@
 	<!--nn1的rpc通信地址-->
 	<property>
 		<name>dfs.namenode.rpc-address.bi.nn1</name>
-		<value>zl200:9000</value>
+		<value>zl50:9000</value>
 	</property>
 	<property>
 		<name>dfs.namenode.http-address.bi.nn1</name>
-		<value>zl200:50070</value>
+		<value>zl50:50070</value>
 	</property>
 
 	<!--nn2的rpc通信地址-->
         <property>
                 <name>dfs.namenode.rpc-address.bi.nn2</name>
-                <value>zl201:9000</value>
+                <value>zl51:9000</value>
         </property>
         <property>
                 <name>dfs.namenode.http-address.bi.nn2</name>
-                <value>zl201:50070</value>
+                <value>zl51:50070</value>
         </property>
 
 	<!--指定namenode的edits元数据在journal上的存放地址-->
 	<property>
 		<name>dfs.namenode.shared.edits.dir</name>
-		<value>qjournal://zl200:8485;zl201:8485;zl202:8485/bi</value>
+		<value>qjournal://zl50:8485;zl51:8485;zl52:8485/bi</value>
 	</property>
 	<!--指定journal在本地磁盘存放的地址-->
 	<property>
